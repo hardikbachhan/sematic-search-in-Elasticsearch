@@ -17,3 +17,18 @@ except Exception as e:
     print(f"Some modules missing: {e}")
     
     
+# Reading data from jobs dataset
+def readFile(filePath):
+    try:
+        df = pd.read_csv(filePath)
+        df = df.fillna("")  # replace none values as Elasticsearch will reject them
+        return df
+    except Exception as e:
+        print(f"Error in reading file: {e}")
+        return []
+
+df = readFile("jobs dataset\data job posts.csv")
+
+print(df[:3])
+print("-----------------------------------------")
+
